@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +23,7 @@ public class GamePanel extends JPanel {
 
 	// 게임 관련 객체
 	private Map map = new Map();
-	private Color[] colorArray = { Color.WHITE, Color.GRAY, Color.YELLOW, Color.BLUE, Color.GREEN };
+	private Color[] colorArray = { new Color(0x3869e4), new Color(0x36369c), Color.YELLOW, Color.BLUE, Color.GREEN };
 	private int colorIndex = 0;
 
 	private int startMapX = 80; // 맵 왼쪽 끝(+20하면 벽 안쪽)
@@ -89,14 +91,22 @@ public class GamePanel extends JPanel {
 			}
 		});
 	}
-
-	@Override
+	
+	@Override //배경
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+		ImageIcon bg = new ImageIcon("tetris_background.png");
+		Image img= bg.getImage();
+		
+		g.drawImage(img, 0, 0, getWidth(), getHeight(), null);
+		
 		drawMap(g);
 		if (gameOn) // 게임 중이면
 			drawBlock(g);
 	}
+
+	
 
 	// 맵 그리기 함수
 	private void drawMap(Graphics g) {
@@ -135,7 +145,6 @@ public class GamePanel extends JPanel {
 		brokeBlock(); // 블록 깨기
 
 		// 블록 위치, 컬러 지정
-		
 		currentBlockX = (int) (Math.random() * 10) * blockSize + startBlockX - blockSize;
 		currentBlockY = startBlockY;
 		colorIndex = (int) (Math.random() * (colorArray.length - 2)) + 2;
@@ -143,6 +152,9 @@ public class GamePanel extends JPanel {
 
 	// 블록 깨는 함수
 	private void brokeBlock() {
+		// 맵을 위에 한 줄 늘리고 백지로 만든 다음 블록이 생기면 게임 멈추기
+		// stopGame();
+		
 		int cnt = 0; // 블록 깨진 횟수
 
 		// visited 배열 초기화
@@ -323,11 +335,11 @@ public class GamePanel extends JPanel {
 		}
 		repaint();
 	}
-
+	
 	// 게임 종료 함수
-	private void stopGame() {
-		fallingThread.interrupt(); // 스레드 강제 종료
-	}
+		private void stopGame() {
+			fallingThread.interrupt(); // 스레드 강제 종료
+		}
 
 	// 블록 떨어지는 스레드
 	private class FallingThread extends Thread {
