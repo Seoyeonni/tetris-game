@@ -18,7 +18,7 @@ public class ScorePanel extends JPanel {
 	public ScorePanel() {
 		setLayout(null); // 배치관리자 삭제
 		
-		ImageIcon scoreImg= new ImageIcon("score_text.png"); //점수 이미지 생성
+		ImageIcon scoreImg= new ImageIcon("img\\score_text.png"); //점수 이미지 생성
 		textLabel.setIcon(scoreImg);
 
 		// 점수 관련 객체 추가
@@ -37,7 +37,7 @@ public class ScorePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		ImageIcon bg = new ImageIcon("score_background.png");
+		ImageIcon bg = new ImageIcon("img\\score_background.png");
 		Image img= bg.getImage();
 		
 		g.drawImage(img, 0, 0, getWidth(), getHeight(), null);

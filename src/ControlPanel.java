@@ -25,16 +25,16 @@ public class ControlPanel extends JPanel {
 		setLayout(null); // 배치관리자 삭제
 		
 		//버튼 이미지
-		ImageIcon start_img= new ImageIcon("start_button.png");
-		ImageIcon stop_img= new ImageIcon("stop_button.png");
-		ImageIcon restart_img= new ImageIcon("restart_button.png");
-		ImageIcon reset_img= new ImageIcon("reset_button.png");
-		ImageIcon exit_img= new ImageIcon("exit_button.png");
-		ImageIcon roll_start= new ImageIcon("clicked_start.png");
-		ImageIcon roll_stop= new ImageIcon("clicked_stop.png");
-		ImageIcon roll_restart= new ImageIcon("clicked_restart.png");
-		ImageIcon roll_reset= new ImageIcon("clicked_reset.png");
-		ImageIcon roll_exit= new ImageIcon("clicked_exit.png");
+		ImageIcon start_img= new ImageIcon("img\\start_button.png");
+		ImageIcon stop_img= new ImageIcon("img\\stop_button.png");
+		ImageIcon restart_img= new ImageIcon("img\\restart_button.png");
+		ImageIcon reset_img= new ImageIcon("img\\reset_button.png");
+		ImageIcon exit_img= new ImageIcon("img\\exit_button.png");
+		ImageIcon roll_start= new ImageIcon("img\\clicked_start.png");
+		ImageIcon roll_stop= new ImageIcon("img\\clicked_stop.png");
+		ImageIcon roll_restart= new ImageIcon("img\\clicked_restart.png");
+		ImageIcon roll_reset= new ImageIcon("img\\clicked_reset.png");
+		ImageIcon roll_exit= new ImageIcon("img\\clicked_exit.png");
 		
 		
 		startButton= new JButton(start_img);
@@ -127,7 +127,7 @@ public class ControlPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		ImageIcon bg = new ImageIcon("control_background.png");
+		ImageIcon bg = new ImageIcon("img\\control_background.png");
 		Image img= bg.getImage();
 		
 		g.drawImage(img, 0, 0, getWidth(), getHeight(), null);

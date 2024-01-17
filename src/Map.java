@@ -2,7 +2,7 @@ import java.awt.Color;
 
 public class Map {
 
-	private Color[] colorArray = { Color.WHITE, Color.GRAY, Color.YELLOW, Color.BLUE, Color.GREEN };
+	private Color[] colorArray = { new Color(0x3869e4), new Color(0x36369c), Color.WHITE, Color.GREEN, Color.YELLOW };
 
 	// for문으로 변경하기
 	private int[][] map = null;

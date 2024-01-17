@@ -23,7 +23,7 @@ public class GamePanel extends JPanel {
 
 	// 게임 관련 객체
 	private Map map = new Map();
-	private Color[] colorArray = { new Color(0x3869e4), new Color(0x36369c), Color.YELLOW, Color.BLUE, Color.GREEN };
+	private Color[] colorArray = { new Color(0x3869e4), new Color(0x36369c), Color.WHITE, Color.GREEN, Color.YELLOW };
 	private int colorIndex = 0;
 
 	private int startMapX = 80; // 맵 왼쪽 끝(+20하면 벽 안쪽)
@@ -96,7 +96,7 @@ public class GamePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		ImageIcon bg = new ImageIcon("tetris_background.png");
+		ImageIcon bg = new ImageIcon("img\\tetris_background.png");
 		Image img= bg.getImage();
 		
 		g.drawImage(img, 0, 0, getWidth(), getHeight(), null);
