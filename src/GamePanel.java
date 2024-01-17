@@ -102,8 +102,13 @@ public class GamePanel extends JPanel {
 		g.drawImage(img, 0, 0, getWidth(), getHeight(), null);
 		
 		drawMap(g);
-		if (gameOn) // 게임 중이면
-			drawBlock(g);
+		if (cnt > 0) {
+			try {
+				Thread.sleep(500); // 잠시 멈춤
+			} catch (InterruptedException e) {
+			}
+			brokeBlock(); // 블록 깨기 다시 
+		}
 	}
 
 	
