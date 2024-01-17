@@ -321,6 +321,7 @@ public class GamePanel extends JPanel {
 	public void resetGame() {
 		gameOn = false; // 게임 상태 변경
 		fallingThread.interrupt(); // 스레드 강제 종료
+		scorePanel.setScore(0);
 
 		// 블록 위치 초기화
 		currentBlockX = startBlockX;
