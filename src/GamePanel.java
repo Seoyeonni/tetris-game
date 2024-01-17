@@ -277,8 +277,13 @@ public class GamePanel extends JPanel {
 		gravity(); // 공중에 있는 블록 아래로 내리기
 
 		// 깨진 블록이 있으면
-		if (cnt > 0)
-			brokeBlock(); // 블록 깨기 다시ㄴ
+		if (cnt > 0) {
+			try {
+				Thread.sleep(500); // 잠시 멈춤
+			} catch (InterruptedException e) {
+			}
+			brokeBlock(); // 블록 깨기 다시 
+		}
 	}
 
 	// 중력 함수
