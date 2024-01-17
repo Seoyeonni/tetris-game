@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
 
 		JSplitPane vPane = new JSplitPane(); // 스플릿팬 객체 생성
 		vPane.setOrientation(JSplitPane.VERTICAL_SPLIT); // 상하로 배치
-		hPane.setDividerSize(0); // 분할바 사이즈 조절
+		vPane.setDividerSize(0); // 분할바 사이즈 조절
 		vPane.setDividerLocation(200); // 분할바 위치 설정
 		vPane.setTopComponent(scorePanel); // 위쪽에 점수판 패널 부착
 		vPane.setBottomComponent(controlPanel); // 아래쪽에 컨트롤 패널 부착
