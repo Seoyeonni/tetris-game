@@ -132,7 +132,7 @@ public class GamePanel extends JPanel {
 
 	// 다음 블록 설정하는 함수
 	private void nextBlock() {
-//		brokeBlock(); // 블록 깨기
+		brokeBlock(); // 블록 깨기
 
 		// 블록 위치, 컬러 지정
 		currentBlockX = (int) (Math.random() * 10) * blockSize + startBlockX - blockSize;
