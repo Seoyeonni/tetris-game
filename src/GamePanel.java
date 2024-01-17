@@ -355,8 +355,13 @@ public class GamePanel extends JPanel {
 					int yIndex = (currentBlockY - startBlockY) / blockSize;
 
 					if (map.getInfo(xIndex, yIndex) != 0) { // 아래가 벽이면 스레드 종료
-						map.setInfo(xIndex, yIndex - 1, colorIndex);
-						nextBlock(); // 다음 블록 생성
+						if (yIndex > 0) { // 인덱스 범위 고려
+							map.setInfo(xIndex, yIndex - 1, colorIndex);
+							colorIndex = 0; // 블록 혼선 없애기 위함
+							nextBlock(); // 다음 블록 생성
+						}
+					} else if (map.getInfo(xIndex, yIndex) != 0 && currentBlockY > startMapY) { // 맵이 넘쳤으면
+						stopGame();
 					} else
 						currentBlockY += blockSize; // 블록이 한 칸씩 아래로 떨어짐
 
