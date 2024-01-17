@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
 	private Color[] colorArray = { new Color(0x3869e4), new Color(0x36369c), Color.YELLOW, Color.BLUE, Color.GREEN };
 	private int colorIndex = 0;
 
-	private int startMapX = 70; // 맵 왼쪽 끝(+20하면 벽 안쪽)
+	private int startMapX = 80; // 맵 왼쪽 끝(+20하면 벽 안쪽)
 	private int startMapY = 200; // 맵 위쪽 끝(벽 안쪽)
 	private int startBlockX = startMapX + 20;
 	private int startBlockY = startMapY - 40;
