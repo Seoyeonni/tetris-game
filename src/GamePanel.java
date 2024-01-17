@@ -132,7 +132,7 @@ public class GamePanel extends JPanel {
 
 	// 다음 블록 설정하는 함수
 	private void nextBlock() {
-		brokeBlock(); // 블록 깨기
+//		brokeBlock(); // 블록 깨기
 
 		// 블록 위치, 컬러 지정
 		currentBlockX = (int) (Math.random() * 10) * blockSize + startBlockX - blockSize;
@@ -142,9 +142,6 @@ public class GamePanel extends JPanel {
 
 	// 블록 깨는 함수
 	private void brokeBlock() {
-		// 맵을 위에 한 줄 늘리고 백지로 만든 다음 블록이 생기면 게임 멈추기
-		// stopGame();
-		
 		int cnt = 0; // 블록 깨진 횟수
 
 		// visited 배열 초기화
@@ -319,11 +316,11 @@ public class GamePanel extends JPanel {
 		}
 		repaint();
 	}
-	
+
 	// 게임 종료 함수
-		private void stopGame() {
-			fallingThread.interrupt(); // 스레드 강제 종료
-		}
+	private void stopGame() {
+		fallingThread.interrupt(); // 스레드 강제 종료
+	}
 
 	// 블록 떨어지는 스레드
 	private class FallingThread extends Thread {
@@ -340,8 +337,12 @@ public class GamePanel extends JPanel {
 					int yIndex = (currentBlockY - startBlockY) / blockSize;
 
 					if (map.getInfo(xIndex, yIndex) != 0) { // 아래가 벽이면 스레드 종료
-						map.setInfo(xIndex, yIndex - 1, colorIndex);
-						nextBlock(); // 다음 블록 생성
+						if (yIndex > 0) { // 인덱스 범위 고려
+							map.setInfo(xIndex, yIndex - 1, colorIndex);
+							nextBlock(); // 다음 블록 생성
+						}
+					} else if (map.getInfo(xIndex, yIndex) != 0 && currentBlockY > startMapY) { // 맵이 넘쳤으면
+						stopGame();
 					} else
 						currentBlockY += blockSize; // 블록이 한 칸씩 아래로 떨어짐
 
